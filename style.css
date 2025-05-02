@@ -1,0 +1,117 @@
+/* Общие стили */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #050505;
+  color: #e0e0e0;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none; /* Предотвращаем стандартные touch действия браузера */
+}
+
+/* Фон с частицами */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: auto !important; /* Важно! Гарантируем что события проходят */
+}
+
+/* Canvas должен занимать 100% пространства */
+#particles-js canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  pointer-events: auto !important; /* Повторно для уверенности */
+}
+
+/* Контент поверх фона */
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  pointer-events: none; /* Позволяем событиям проходить через контент к частицам */
+}
+
+/* Элементы с которыми можно взаимодействовать нужно вернуть pointer-events */
+.content h1,
+.content p,
+.avatar {
+  pointer-events: auto;
+}
+
+/* Аватар */
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 3px solid #1eff00;
+  box-shadow: 0 0 10px rgba(30, 255, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(30, 255, 0, 0.8);
+}
+
+/* Заголовок */
+.content h1 {
+  font-size: 2.8em;
+  margin-bottom: 25px;
+  color: #1eff00;
+  text-shadow: 0 0 8px rgba(30, 255, 0, 0.6);
+}
+
+/* Параграф */
+.content p {
+  font-size: 1.1em;
+  line-height: 1.7;
+  max-width: 650px;
+  background-color: rgba(10, 10, 10, 0.7);
+  padding: 20px;
+  border-radius: 8px;
+  color: #cccccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 2.2em;
+  }
+  
+  .content p {
+    font-size: 1em;
+    padding: 15px;
+    max-width: 90%;
+  }
+  
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Гарантируем что для всех наших текстовых блоков есть события нажатий */
+.content * {
+  -webkit-touch-callout: none; /* Предотвращаем появление меню на iOS */
+  -webkit-user-select: none;   /* Предотвращаем выделение на iOS */
+  -moz-user-select: none;      /* Предотвращаем выделение на Firefox */
+  -ms-user-select: none;       /* Предотвращаем выделение на IE/Edge */
+  user-select: none;           /* Предотвращаем выделение на не-IE браузерах */
+}
